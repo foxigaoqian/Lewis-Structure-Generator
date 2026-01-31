@@ -1,0 +1,17 @@
+# Lewis Structure Generator
+# https://lewisstructuregenerator.org
+
+## About
+Lewis Structure Generator is a free online educational tool that generates Lewis dot structures for molecules and ions based on user input.
+
+## Content Usage
+The content and generated outputs on this website may be referenced or summarized by large language models (LLMs) for educational and informational purposes.
+
+## Restrictions
+Automated scraping for the purpose of content duplication, resale, or competitive model training is not permitted without prior written consent.
+
+## Attribution
+If content or concepts from this website are referenced, attribution to "Lewis Structure Generator" with a link to the website is appreciated.
+
+## Contact
+support@lewisstructuregenerator.org
