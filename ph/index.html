@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html class="dark" lang="tl">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Lewis Structure Generator | Gumuhit ng Lewis Dot Structures Online</title>
+    <meta name="description" content="Lumikha ng Lewis structures agad. Maglagay ng chemical formula upang gumuhit ng tumpak na Lewis dot structures na may bonds, lone pairs, at charges. Libreng online tool.">
+<meta property="og:image" content="https://lewisstructuregenerator.org/logo.jpg">
+<meta property="og:url" content="https://lewisstructuregenerator.org">
+<meta property="og:title" content="Lewis Structure Generator | Gumuhit ng Lewis Dot Structures Online">
+<meta property="og:description" content="Lumikha ng Lewis structures agad. Maglagay ng chemical formula upang gumuhit ng tumpak na Lewis dot structures na may bonds, lone pairs, at charges. Libreng online tool.">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700;900&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="shortcut icon" href="/favicon.ico"> 
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVSBE45MDG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZVSBE45MDG');
+</script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1973f0",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                        "surface-dark": "#192434",
+                        "border-dark": "#233248",
+                        "text-secondary": "#91a9ca",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased min-h-screen flex flex-col overflow-x-hidden selection:bg-primary selection:text-white">
+
+<!-- Header -->
+<header class="sticky top-0 z-50 w-full border-b border-solid border-border-dark bg-background-dark/80 backdrop-blur-md">
+    <div class="px-4 md:px-10 py-3 max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-3 text-white">
+            <div class="size-8 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined text-3xl">hexagon</span>
+            </div>
+            <h2 class="text-white text-xl font-bold tracking-tight">Lewis Structure Generator</h2>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="flex-grow flex flex-col">
+    <!-- Hero Section -->
+    <section class="w-full bg-gradient-to-b from-background-dark via-[#141d2b] to-background-dark pt-12 pb-8 px-4">
+        <div class="max-w-4xl mx-auto flex flex-col items-center gap-8">
+            <!-- Title -->
+            <div class="text-center space-y-4 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight">
+                    Lewis Structure Generator
+                </h1>
+                <p class="text-text-secondary text-lg font-light leading-relaxed">
+                    Instant Lewis Dot Structures, pagsusuri ng geometry, at pagkalkula ng formal charge. Maglagay ng molekula upang visualize ang electron configuration nito.
+                </p>
+            </div>
+
+            <!-- Input Section -->
+            <div class="w-full max-w-xl relative group z-10 flex flex-col gap-3">
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-cyan-500 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-200"></div>
+                    <div class="relative flex w-full items-stretch rounded-lg bg-surface-dark shadow-2xl ring-1 ring-border-dark p-1">
+                        <input id="formula-input" class="flex-1 bg-transparent border-none text-white placeholder:text-text-secondary px-4 py-3 text-lg focus:ring-0 focus:outline-none" placeholder="H2O" value="H2O"/>
+                        <div class="flex items-center gap-2">
+                            <button id="random-btn" class="flex items-center gap-2 px-4 py-2 text-text-secondary hover:text-white hover:bg-white/5 rounded-md transition-all text-sm font-medium border border-transparent hover:border-white/10">
+                                <span class="material-symbols-outlined text-lg">shuffle</span>
+                                <span class="hidden sm:inline">Random<br/>Halimbawa</span>
+                            </button>
+                            <button id="generate-btn" class="bg-primary hover:bg-blue-600 text-white font-bold px-6 py-2 rounded-md transition-all flex items-center gap-2 shadow-lg shadow-blue-900/20">
+                                <span class="hidden sm:inline">Lumikha</span>
+                                <span class="material-symbols-outlined">science</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Info Box -->
+                <div class="px-4 py-2 bg-surface-dark/50 rounded-lg border border-white/5 text-xs text-text-secondary flex items-start gap-2">
+                    <span class="material-symbols-outlined text-primary text-sm mt-0.5">info</span>
+                    <p>
+                        <span class="text-white font-medium">Suportado:</span> Mga kemikal na elemento (hal., <span class="text-white font-mono">Ca, Fe, Br</span>), functional groups (hal., <span class="text-white font-mono">Ph, Me, Et</span>), parentheses/brackets, at karaniwang pangalan (hal., <span class="text-white">water, ammonia</span>).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="result-section" class="w-full mt-8">
+                <div class="bg-surface-dark rounded-xl border border-border-dark shadow-xl overflow-hidden">
+                    <!-- Results Header -->
+                    <div class="px-6 py-4 border-b border-border-dark flex flex-col sm:flex-row justify-between items-center gap-4 bg-[#1e293b]">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-green-400">check_circle</span>
+                            <h3 id="result-title" class="text-white font-bold text-lg">Resulta: Tubig (H₂O)</h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button id="download-png-btn" class="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-all text-sm font-medium shadow-lg">
+                                <span class="material-symbols-outlined text-lg">download</span>
+                                <span>PNG</span>
+                            </button>
+                            <button id="download-svg-btn" class="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-all text-sm font-medium shadow-lg">
+                                <span class="material-symbols-outlined text-lg">download</span>
+                                <span>SVG</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 min-h-[400px]">
+                        <!-- Diagram Section -->
+                        <div class="lg:col-span-2 bg-[#0f151e] relative flex items-center justify-center p-8 border-r border-border-dark border-b lg:border-b-0">
+                            <div id="structure-diagram" class="relative w-full h-full min-h-[300px] flex items-center justify-center rounded-lg border border-dashed border-border-dark bg-background-dark/50">
+                                <!-- Structure will be inserted here -->
+                            </div>
+                        </div>
+
+                        <!-- Properties Section -->
+                        <div class="bg-surface-dark p-6 space-y-6 overflow-y-auto max-h-[500px]">
+                            <div>
+                                <h4 class="text-sm font-bold text-text-secondary mb-3 uppercase tracking-wider">Mga Katangian ng Molekula</h4>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center py-2 border-b border-border-dark">
+                                        <span class="text-text-secondary text-sm">Valence Electrons</span>
+                                        <span id="prop-valence" class="text-white font-bold">8</span>
+                                    </div>
+                                    <div class="flex justify-between items-center py-2 border-b border-border-dark">
+                                        <span class="text-text-secondary text-sm">Net Charge</span>
+                                        <span id="prop-charge" class="text-white font-bold">0</span>
+                                    </div>
+                                    <div class="flex justify-between items-center py-2 border-b border-border-dark">
+                                        <span class="text-text-secondary text-sm">Gitnang Atomo</span>
+                                        <span id="prop-central" class="text-red-400 font-bold">Oksiheno</span>
+                                    </div>
+                                    <div class="flex justify-between items-center py-2 border-b border-border-dark">
+                                        <span class="text-text-secondary text-sm">Molar Mass</span>
+                                        <span id="prop-mass" class="text-white font-bold">18.015 g/mol</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="text-sm font-bold text-text-secondary mb-3 uppercase tracking-wider">Geometrya</h4>
+                                <div class="space-y-3">
+                                    <div class="py-2 border-b border-border-dark">
+                                        <span id="prop-geometry" class="text-text-secondary text-sm">Baluktot (V-hugis)</span>
+                                    </div>
+                                    <div class="flex justify-between items-center py-2 border-b border-border-dark">
+                                        <span class="text-text-secondary text-sm">Anggulo ng Bond</span>
+                                        <span id="prop-angle" class="text-white font-bold">104.5°</span>
+                                    </div>
+                                    <div class="flex justify-between items-center py-2 border-b border-border-dark">
+                                        <span class="text-text-secondary text-sm">Hybridization</span>
+                                        <span id="prop-hybrid" class="text-white font-bold">sp³</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Element Composition -->
+                            <div>
+                                <h4 class="text-sm font-bold text-text-secondary mb-3 uppercase tracking-wider">Komposisyon ng Elemento</h4>
+                                <div id="element-list" class="space-y-2">
+                                    <!-- Will be populated dynamically -->
+                                </div>
+                            </div>
+
+                            <!-- Composition Chart -->
+                            <div>
+                                <h4 class="text-sm font-bold text-text-secondary mb-3 uppercase tracking-wider">Porsyento ng Masa</h4>
+                                <div class="bg-background-dark rounded-lg p-4">
+                                    <canvas id="composition-chart" height="200"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Common Examples Section -->
+    <section class="w-full bg-background-dark py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex items-center gap-3 mb-8">
+                <span class="material-symbols-outlined text-primary text-3xl">science</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-white">Mga Karaniwang Halimbawa</h2>
+            </div>
+            
+            <div id="example-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Example cards will be generated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section with Sidebar -->
+    <section class="w-full bg-[#0d1117] py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-12 gap-8">
+                <!-- Main Content -->
+                <div class="lg:col-span-8 space-y-12">
+                    <!-- About Section -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="material-symbols-outlined text-primary text-3xl">info</span>
+                            <h2 class="text-2xl md:text-3xl font-bold text-white">Tungkol sa Aming Lewis Structure Generator</h2>
+                        </div>
+                        <div class="bg-surface-dark rounded-xl border border-border-dark p-6 space-y-4">
+                            <p class="text-text-secondary leading-relaxed">
+                                Ang app na ito ay dinisenyo upang tumulong sa mga estudyante ng chemistry, mga guro, at mananaliksik na <span class="text-white font-medium">visualize ang molecular bonding agad</span>, sa pamamagitan ng paglilinaw ng agwat sa pagitan ng abstract na chemical formulas at aktwal na electron configurations (intuitive at visual).
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-4 mt-6">
+                                <div class="bg-background-dark rounded-lg p-4 border border-border-dark">
+                                    <div class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-2xl">check_circle</span>
+                                        <div>
+                                            <h4 class="text-white font-bold mb-1">Advanced Input Support</h4>
+                                            <p class="text-text-secondary text-sm">Humahawak ng kumplikadong notation kabilang ang functional groups, expanded octets, at karaniwang pangalan.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-background-dark rounded-lg p-4 border border-border-dark">
+                                    <div class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary text-2xl">auto_graph</span>
+                                        <div>
+                                            <h4 class="text-white font-bold mb-1">Mataas na Kalidad na Mga Diagram</h4>
+                                            <p class="text-text-secondary text-sm">Agad na lumilikha ng malinis, propesyonal na diagrams para sa lahat ng iyong mga ulat.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- What is Lewis Structure -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="material-symbols-outlined text-primary text-3xl">school</span>
+                            <h2 class="text-2xl md:text-3xl font-bold text-white">Ano ang Lewis Structure?</h2>
+                        </div>
+                        <div class="bg-surface-dark rounded-xl border border-border-dark p-6 space-y-4">
+                            <p class="text-text-secondary leading-relaxed">
+                                Ang <span class="text-white font-medium">Lewis Structure</span> ay isang mahusay na graphical representation ng valence electrons sa mga molekula at polyatomic ions. Ito ay isang linya para sa isang bond (isang shared pair o double bond), dalawang linya para sa double bond o tatlong linya para sa triple bond (isang pares ng tuldok sa tabi ng atomo para sa unpaired electron o radical).
+                            </p>
+                            <div class="space-y-3 mt-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="text-primary font-bold">•</div>
+                                    <p class="text-text-secondary text-sm"><span class="text-white font-medium">Mga Bonding Pair:</span> Isang linya para sa isang bond, dalawang linya para sa double bonds, at tatlong linya para sa triple bonds.</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="text-primary font-bold">•</div>
+                                    <p class="text-text-secondary text-sm"><span class="text-white font-medium">Mga Lone Pair:</span> Mga pares ng tuldok na matatagpuan sa isang atomo na hindi kasama sa bonding (non-bonding valence electrons).</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="text-primary font-bold">•</div>
+                                    <p class="text-text-secondary text-sm"><span class="text-white font-medium">Mga Radical Dot:</span> Isang tuldok sa tabi ng atomo ay nagpapahiwatig (single electron o radical).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step by Step Guide -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="material-symbols-outlined text-primary text-3xl">format_list_numbered</span>
+                            <h2 class="text-2xl md:text-3xl font-bold text-white">Hakbang-hakbang na Gabay (Halimbawa: CO₂)</h2>
+                        </div>
+                        <div class="space-y-3">
+                            <!-- Keeping the existing step-by-step guide structure from the original file -->
+                            <div class="bg-surface-dark rounded-lg border border-border-dark p-5">
+                                <div class="flex items-start gap-4">
+                                    <div class="size-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold flex-shrink-0">1</div>
+                                    <div>
+                                        <h4 class="text-white font-bold mb-2">Bilangin ang Valence Electrons</h4>
+                                        <p class="text-text-secondary text-sm">Kalkulahin ang kabuuang valence electrons. Ang Carbon (Group 14) ay may 4, Oxygen (Group 16) ay may 6. Kabuuan = 4 + (2×6) = <span class="text-white font-mono">16 e⁻</span>.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-surface-dark rounded-lg border border-border-dark p-5">
+                                <div class="flex items-start gap-4">
+                                    <div class="size-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold flex-shrink-0">2</div>
+                                    <div>
+                                        <h4 class="text-white font-bold mb-2">Tukuyin ang Gitnang Atomo</h4>
+                                        <p class="text-text-secondary text-sm">Ang Carbon ay hindi gaanong electronegative kaysa Oxygen, kaya ito ang gitna: <span class="text-white font-mono">O-C-O</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-surface-dark rounded-lg border border-border-dark p-5">
+                                <div class="flex items-start gap-4">
+                                    <div class="size-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold flex-shrink-0">3</div>
+                                    <div>
+                                        <h4 class="text-white font-bold mb-2">Gumuhit ng Mga Single Bond</h4>
+                                        <p class="text-text-secondary text-sm">Ikonekta ang bawat oxygen sa carbon na may isang single bond: 2 bonds × 2 e⁻ = 4 e⁻ ginamit. Natitira = 12 e⁻.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-surface-dark rounded-lg border border-border-dark p-5">
+                                <div class="flex items-start gap-4">
+                                    <div class="size-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold flex-shrink-0">4</div>
+                                    <div>
+                                        <h4 class="text-white font-bold mb-2">Magdagdag ng Lone Pairs sa Panlabas na Mga Atomo</h4>
+                                        <p class="text-text-secondary text-sm">Ilagay ang natitirang electrons sa oxygen upang masiyahan ang kanilang octet. Ang bawat isa ay nangangailangan ng 6 pang e⁻ (3 lone pairs).</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-surface-dark rounded-lg border border-border-dark p-5">
+                                <div class="flex items-start gap-4">
+                                    <div class="size-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold flex-shrink-0">5</div>
+                                    <div>
+                                        <h4 class="text-white font-bold mb-2">Suriin ang Octet ng Gitnang Atomo</h4>
+                                        <p class="text-text-secondary text-sm">Ang Carbon ay may 4 e⁻ lamang (kailangan ng 8). Bumuo ng double bonds: <span class="text-white font-mono">O=C=O</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-surface-dark rounded-lg border border-border-dark p-5">
+                                <div class="flex items-start gap-4">
+                                    <div class="size-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold flex-shrink-0">6</div>
+                                    <div>
+                                        <h4 class="text-white font-bold mb-2">I-verify ang Huling Structure</h4>
+                                        <p class="text-text-secondary text-sm mb-2">Suriin na ang lahat ng atomo ay nakakatugon sa octet rule at kalkulahin ang formal charges.</p>
+                                        <div class="flex items-center gap-2 mt-2">
+                                            <span class="material-symbols-outlined text-green-400 text-sm">check_circle</span>
+                                            <span class="text-xs text-text-secondary">Lahat ng octets kumpleto</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FAQ Section -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="material-symbols-outlined text-primary text-3xl">help</span>
+                            <h2 class="text-2xl font-bold text-white">Mga Madalas Itanong</h2>
+                        </div>
+                        <div class="space-y-3">
+                            <details class="group bg-surface-dark rounded-lg border border-border-dark">
+                                <summary class="flex cursor-pointer items-center justify-between p-4 font-medium text-white">
+                                    <span>Bakit ang ilang atomo ay lumalaki ang kanilang octet?</span>
+                                    <span class="transition group-open:rotate-180 material-symbols-outlined">expand_more</span>
+                                </summary>
+                                <div class="px-4 pb-4 text-text-secondary text-sm">Ang mga elemento sa period 3+ ay maaaring gumamit ng d-orbitals, na nagpapahintulot ng higit sa 8 electrons (hal., ang PCl₅ ay may 10).</div>
+                            </details>
+                            
+                            <details class="group bg-surface-dark rounded-lg border border-border-dark">
+                                <summary class="flex cursor-pointer items-center justify-between p-4 font-medium text-white">
+                                    <span>Ano ang Formal Charge?</span>
+                                    <span class="transition group-open:rotate-180 material-symbols-outlined">expand_more</span>
+                                </summary>
+                                <div class="px-4 pb-4 text-text-secondary text-sm">Isang teoretikal na charge na kinakalkula sa pamamagitan ng: FC = V - (L + B/2), kung saan V = valence electrons, L = lone pairs, B = bonding electrons.</div>
+                            </details>
+
+                            <details class="group bg-surface-dark rounded-lg border border-border-dark">
+                                <summary class="flex cursor-pointer items-center justify-between p-4 font-medium text-white">
+                                    <span>Paano ko gagamitin ang Lewis Structure Generator?</span>
+                                    <span class="transition group-open:rotate-180 material-symbols-outlined">expand_more</span>
+                                </summary>
+                                <div class="px-4 pb-4 text-text-secondary text-sm">Ilagay ang iyong chemical formula at i-click ang "Lumikha". Ang tool ay tumatanggap ng karaniwang notation, ions, at functional groups.</div>
+                            </details>
+
+                            <details class="group bg-surface-dark rounded-lg border border-border-dark">
+                                <summary class="flex cursor-pointer items-center justify-between p-4 font-medium text-white">
+                                    <span>Sinusuportahan ba ng tool na ito ang mga charged ion?</span>
+                                    <span class="transition group-open:rotate-180 material-symbols-outlined">expand_more</span>
+                                </summary>
+                                <div class="px-4 pb-4 text-text-secondary text-sm">Oo! Mag-input ng mga ion gamit ang notation tulad ng SO4 2- o NH4 +.</div>
+                            </details>
+
+                            <details class="group bg-surface-dark rounded-lg border border-border-dark">
+                                <summary class="flex cursor-pointer items-center justify-between p-4 font-medium text-white">
+                                    <span>Anong mga molekula ang suportado?</span>
+                                    <span class="transition group-open:rotate-180 material-symbols-outlined">expand_more</span>
+                                </summary>
+                                <div class="px-4 pb-4 text-text-secondary text-sm">Sinusuportahan namin ang malawak na hanay mula sa simpleng diatomic gases hanggang sa kumplikadong organic compounds, kabilang ang acids, salts, hydrocarbons, at expanded octets.</div>
+                            </details>
+
+                            <details class="group bg-surface-dark rounded-lg border border-border-dark">
+                                <summary class="flex cursor-pointer items-center justify-between p-4 font-medium text-white">
+                                    <span>Can I see resonance structures?</span>
+                                    <span class="transition group-open:rotate-180 material-symbols-outlined">expand_more</span>
+                                </summary>
+                                <div class="px-4 pb-4 text-text-secondary text-sm">Currently shows the most stable resonance contributor based on formal charge minimization.</div>
+                            </details>
+
+                            <details class="group bg-surface-dark rounded-lg border border-border-dark">
+                                <summary class="flex cursor-pointer items-center justify-between p-4 font-medium text-white">
+                                    <span>Is the VSEPR theory applied here?</span>
+                                    <span class="transition group-open:rotate-180 material-symbols-outlined">expand_more</span>
+                                </summary>
+                                <div class="px-4 pb-4 text-text-secondary text-sm">Yes, molecular geometry and bond angles are calculated using VSEPR theory.</div>
+                            </details>
+
+                            <details class="group bg-surface-dark rounded-lg border border-border-dark">
+                                <summary class="flex cursor-pointer items-center justify-between p-4 font-medium text-white">
+                                    <span>What does "Hybridization" mean?</span>
+                                    <span class="transition group-open:rotate-180 material-symbols-outlined">expand_more</span>
+                                </summary>
+                                <div class="px-4 pb-4 text-text-secondary text-sm">Mixing of atomic orbitals to form new hybrid orbitals (e.g., sp³ in tetrahedral CH₄, sp² in trigonal planar BF₃).</div>
+                            </details>
+
+                            <details class="group bg-surface-dark rounded-lg border border-border-dark">
+                                <summary class="flex cursor-pointer items-center justify-between p-4 font-medium text-white">
+                                    <span>Is this tool free for students?</span>
+                                    <span class="transition group-open:rotate-180 material-symbols-outlined">expand_more</span>
+                                </summary>
+                                <div class="px-4 pb-4 text-text-secondary text-sm">Absolutely! This is a free educational resource for students and teachers.</div>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="lg:col-span-4">
+                    <div class="bg-surface-dark rounded-xl border border-border-dark p-6 sticky top-24">
+                        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">build</span>
+                            Related Chemistry Tools
+                        </h3>
+                        <nav class="flex flex-col gap-2">
+                            <a class="flex items-center gap-3 p-3 rounded-lg hover:bg-[#1c2a3f] border border-transparent hover:border-border-dark hover:translate-x-1 transition-all group duration-200 cursor-pointer">
+                                <div class="size-8 rounded bg-teal-500/10 text-teal-400 flex items-center justify-center group-hover:bg-teal-500 group-hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-lg">view_in_ar</span>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium text-sm">VSEPR Calculator</p>
+                                    <p class="text-text-secondary text-xs">Predict molecular geometry</p>
+                                </div>
+                            </a>
+                            
+                            <a class="flex items-center gap-3 p-3 rounded-lg hover:bg-[#1c2a3f] border border-transparent hover:border-border-dark hover:translate-x-1 transition-all group duration-200 cursor-pointer">
+                                <div class="size-8 rounded bg-purple-500/10 text-purple-400 flex items-center justify-center group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-lg">scale</span>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium text-sm">Molar Mass Calculator</p>
+                                    <p class="text-text-secondary text-xs">Calculate weights instantly</p>
+                                </div>
+                            </a>
+                            
+                            <a class="flex items-center gap-3 p-3 rounded-lg hover:bg-[#1c2a3f] border border-transparent hover:border-border-dark hover:translate-x-1 transition-all group duration-200 cursor-pointer">
+                                <div class="size-8 rounded bg-orange-500/10 text-orange-400 flex items-center justify-center group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-lg">bolt</span>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium text-sm">Oxidation Number</p>
+                                    <p class="text-text-secondary text-xs">Find states for any element</p>
+                                </div>
+                            </a>
+
+                            <a class="flex items-center gap-3 p-3 rounded-lg hover:bg-[#1c2a3f] border border-transparent hover:border-border-dark hover:translate-x-1 transition-all group duration-200 cursor-pointer">
+                                <div class="size-8 rounded bg-yellow-500/10 text-yellow-400 flex items-center justify-center group-hover:bg-yellow-500 group-hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-lg">functions</span>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium text-sm">Stoichiometry Solver</p>
+                                    <p class="text-text-secondary text-xs">Balance equations easily</p>
+                                </div>
+                            </a>
+                        </nav>
+
+                        <div class="mt-6 pt-6 border-t border-border-dark">
+                            <div class="bg-gradient-to-br from-primary/20 to-transparent rounded-xl border border-primary/30 p-5">
+                                <div class="flex items-start gap-4">
+                                    <span class="material-symbols-outlined text-primary text-3xl">school</span>
+                                    <div>
+                                        <h4 class="text-white font-bold mb-1">Study for Finals?</h4>
+                                        <p class="text-sm text-text-secondary mb-3">Get our complete PDF cheat sheet for Chemical Bonding & Molecular Geometry.</p>
+                                        <button class="text-sm font-bold text-primary hover:text-white transition-colors flex items-center gap-1 cursor-pointer">
+                                            Download PDF <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="border-t border-border-dark bg-background-dark py-8">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex flex-col items-center text-center gap-6">
+            <div class="flex items-center gap-2 text-text-secondary">
+                <span class="material-symbols-outlined text-lg">hexagon</span>
+                <span class="text-sm font-semibold">Please <a href="/contact.html">let us know</a> how we can improve this web app.</span>
+                <br><a href='javascript:doNotSellMyInfoToggle();' class='footer'>Do Not Sell My Personal Information</a>
+                <script>
+                    var tr_already_opted_out = "You already opted out from selling your personal information";
+                    var tr_would_you_like_to_opt_out = "Would you like to opt out from selling your personal informaion for the purpose of ads personalization?";
+                </script>
+            </div>
+            <div class="space-y-2">
+                <p class="text-text-secondary text-sm max-w-3xl leading-relaxed mx-auto">
+                    Lewis Structure Generator is a web application. Mission: Provide best-in-class chemistry tools to chemists and students. Using this website, you signify your acceptance of <a href="/terms.html">Terms and Conditions</a> and <a href="/privacypolicy.html">Privacy Policy</a>.
+                </p>
+                <p class="text-text-secondary text-sm font-medium">
+                    © 2026 LewisStructureGenerator.org. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Molecular database with alias support
+const moleculeAliases = {
+    'WATER': 'H2O',
+    'METHANE': 'CH4',
+    'AMMONIA': 'NH3',
+    'CARBON DIOXIDE': 'CO2',
+    'CARBONDIOXIDE': 'CO2',
+    'SULFUR DIOXIDE': 'SO2',
+    'SULFURDIOXIDE': 'SO2',
+    'SULFUR TRIOXIDE': 'SO3',
+    'SULFURTRIOXIDE': 'SO3',
+    'SULFURIC ACID': 'H2SO4',
+    'SULFURICACID': 'H2SO4',
+    'HYDROGEN CHLORIDE': 'HCL',
+    'HYDROGENCHLORIDE': 'HCL',
+    'HYDROGEN SULFIDE': 'H2S',
+    'HYDROGENSULFIDE': 'H2S',
+    'OXYGEN': 'O2',
+    'NITROGEN': 'N2',
+    'HYDROGEN PEROXIDE': 'H2O2',
+    'HYDROGENPEROXIDE': 'H2O2',
+    'HYDROGEN FLUORIDE': 'HF',
+    'HYDROGENFLUORIDE': 'HF',
+    'CHLORINE': 'CL2'
+};
+
+const molecules = {
+    'H2O': {
+        name: 'Water',
+        formula: 'H₂O',
+        valenceElectrons: 8,
+        netCharge: 0,
+        centralAtom: 'Oxygen',
+        centralAtomColor: 'red',
+        geometry: 'Bent (V-shaped)',
+        bondAngle: '104.5°',
+        hybridization: 'sp³',
+        structure: 'water',
+        molarMass: 18.015,
+        elements: {
+            'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' },
+            'O': { count: 1, mass: 15.999, color: '#ef4444', name: 'Oxygen' }
+        }
+    },
+    'CO2': {
+        name: 'Carbon Dioxide',
+        formula: 'CO₂',
+        valenceElectrons: 16,
+        netCharge: 0,
+        centralAtom: 'Carbon',
+        centralAtomColor: 'gray',
+        geometry: 'Linear',
+        bondAngle: '180°',
+        hybridization: 'sp',
+        structure: 'co2',
+        molarMass: 44.009,
+        elements: {
+            'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' },
+            'O': { count: 2, mass: 15.999, color: '#ef4444', name: 'Oxygen' }
+        }
+    },
+    'CH4': {
+        name: 'Methane',
+        formula: 'CH₄',
+        valenceElectrons: 8,
+        netCharge: 0,
+        centralAtom: 'Carbon',
+        centralAtomColor: 'gray',
+        geometry: 'Tetrahedral',
+        bondAngle: '109.5°',
+        hybridization: 'sp³',
+        structure: 'ch4',
+        molarMass: 16.043,
+        elements: {
+            'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' },
+            'H': { count: 4, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }
+        }
+    },
+    'NH3': {
+        name: 'Ammonia',
+        formula: 'NH₃',
+        valenceElectrons: 8,
+        netCharge: 0,
+        centralAtom: 'Nitrogen',
+        centralAtomColor: 'blue',
+        geometry: 'Trigonal Pyramidal',
+        bondAngle: '107°',
+        hybridization: 'sp³',
+        structure: 'nh3',
+        molarMass: 17.031,
+        elements: {
+            'N': { count: 1, mass: 14.007, color: '#3b82f6', name: 'Nitrogen' },
+            'H': { count: 3, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }
+        }
+    },
+    'HCL': {
+        name: 'Hydrogen Chloride',
+        formula: 'HCl',
+        valenceElectrons: 8,
+        netCharge: 0,
+        centralAtom: 'Chlorine',
+        centralAtomColor: 'green',
+        geometry: 'Linear',
+        bondAngle: '180°',
+        hybridization: 'sp',
+        structure: 'hcl',
+        molarMass: 36.458,
+        elements: {
+            'H': { count: 1, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' },
+            'Cl': { count: 1, mass: 35.45, color: '#22c55e', name: 'Chlorine' }
+        }
+    },
+    'H2S': {
+        name: 'Hydrogen Sulfide',
+        formula: 'H₂S',
+        valenceElectrons: 8,
+        netCharge: 0,
+        centralAtom: 'Sulfur',
+        centralAtomColor: 'yellow',
+        geometry: 'Bent',
+        bondAngle: '92°',
+        hybridization: 'sp³',
+        structure: 'h2s',
+        molarMass: 34.081,
+        elements: {
+            'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' },
+            'S': { count: 1, mass: 32.06, color: '#eab308', name: 'Sulfur' }
+        }
+    },
+    'SO2': {
+        name: 'Sulfur Dioxide',
+        formula: 'SO₂',
+        valenceElectrons: 18,
+        netCharge: 0,
+        centralAtom: 'Sulfur',
+        centralAtomColor: 'yellow',
+        geometry: 'Bent',
+        bondAngle: '119°',
+        hybridization: 'sp²',
+        structure: 'so2',
+        molarMass: 64.066,
+        elements: {
+            'S': { count: 1, mass: 32.06, color: '#eab308', name: 'Sulfur' },
+            'O': { count: 2, mass: 15.999, color: '#ef4444', name: 'Oxygen' }
+        }
+    },
+    'SO3': {
+        name: 'Sulfur Trioxide',
+        formula: 'SO₃',
+        valenceElectrons: 24,
+        netCharge: 0,
+        centralAtom: 'Sulfur',
+        centralAtomColor: 'yellow',
+        geometry: 'Trigonal Planar',
+        bondAngle: '120°',
+        hybridization: 'sp²',
+        structure: 'so3',
+        molarMass: 80.066,
+        elements: {
+            'S': { count: 1, mass: 32.06, color: '#eab308', name: 'Sulfur' },
+            'O': { count: 3, mass: 15.999, color: '#ef4444', name: 'Oxygen' }
+        }
+    },
+    'H2SO4': {
+        name: 'Sulfuric Acid',
+        formula: 'H₂SO₄',
+        valenceElectrons: 32,
+        netCharge: 0,
+        centralAtom: 'Sulfur',
+        centralAtomColor: 'yellow',
+        geometry: 'Tetrahedral',
+        bondAngle: '109.5°',
+        hybridization: 'sp³',
+        structure: 'h2so4',
+        molarMass: 98.079,
+        elements: {
+            'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' },
+            'S': { count: 1, mass: 32.06, color: '#eab308', name: 'Sulfur' },
+            'O': { count: 4, mass: 15.999, color: '#ef4444', name: 'Oxygen' }
+        }
+    },
+    'O2': {
+        name: 'Oxygen',
+        formula: 'O₂',
+        valenceElectrons: 12,
+        netCharge: 0,
+        centralAtom: 'Oxygen',
+        centralAtomColor: 'red',
+        geometry: 'Linear',
+        bondAngle: '180°',
+        hybridization: 'sp²',
+        structure: 'o2',
+        molarMass: 31.998,
+        elements: {
+            'O': { count: 2, mass: 15.999, color: '#ef4444', name: 'Oxygen' }
+        }
+    },
+    'N2': {
+        name: 'Nitrogen',
+        formula: 'N₂',
+        valenceElectrons: 10,
+        netCharge: 0,
+        centralAtom: 'Nitrogen',
+        centralAtomColor: 'blue',
+        geometry: 'Linear',
+        bondAngle: '180°',
+        hybridization: 'sp',
+        structure: 'n2',
+        molarMass: 28.014,
+        elements: {
+            'N': { count: 2, mass: 14.007, color: '#3b82f6', name: 'Nitrogen' }
+        }
+    },
+    'H2O2': {
+        name: 'Hydrogen Peroxide',
+        formula: 'H₂O₂',
+        valenceElectrons: 14,
+        netCharge: 0,
+        centralAtom: 'Oxygen',
+        centralAtomColor: 'red',
+        geometry: 'Bent',
+        bondAngle: '94.8°',
+        hybridization: 'sp³',
+        structure: 'h2o2',
+        molarMass: 34.015,
+        elements: {
+            'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' },
+            'O': { count: 2, mass: 15.999, color: '#ef4444', name: 'Oxygen' }
+        }
+    },
+    'HF': {
+        name: 'Hydrogen Fluoride',
+        formula: 'HF',
+        valenceElectrons: 8,
+        netCharge: 0,
+        centralAtom: 'Fluorine',
+        centralAtomColor: 'cyan',
+        geometry: 'Linear',
+        bondAngle: '180°',
+        hybridization: 'sp',
+        structure: 'hf',
+        molarMass: 20.006,
+        elements: {
+            'H': { count: 1, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' },
+            'F': { count: 1, mass: 18.998, color: '#06b6d4', name: 'Fluorine' }
+        }
+    },
+    'CL2': {
+        name: 'Chlorine',
+        formula: 'Cl₂',
+        valenceElectrons: 14,
+        netCharge: 0,
+        centralAtom: 'Chlorine',
+        centralAtomColor: 'green',
+        geometry: 'Linear',
+        bondAngle: '180°',
+        hybridization: 'sp³',
+        structure: 'cl2',
+        molarMass: 70.906,
+        elements: {
+            'Cl': { count: 2, mass: 35.45, color: '#22c55e', name: 'Chlorine' }
+        }
+    }
+};
+
+// DOM elements
+const input = document.getElementById('formula-input');
+const generateBtn = document.getElementById('generate-btn');
+const randomBtn = document.getElementById('random-btn');
+const resultSection = document.getElementById('result-section');
+const exampleGrid = document.getElementById('example-grid');
+
+// Global variables
+let compositionChart = null;
+let currentMolecule = null;
+
+// Generate example cards
+function generateExampleCards() {
+    const examples = [
+        { formula: 'CO2', name: 'Carbon Dioxide', geometry: 'Linear' },
+        { formula: 'NH3', name: 'Ammonia', geometry: 'Trigonal' },
+        { formula: 'CH4', name: 'Methane', geometry: 'Tetrahedral' },
+        { formula: 'SO2', name: 'Sulfur Dioxide', geometry: 'Bent' },
+        { formula: 'SO3', name: 'Sulfur Trioxide', geometry: 'Trigonal' },
+        { formula: 'H2SO4', name: 'Sulfuric Acid', geometry: 'Tetrahedral' },
+        { formula: 'HCL', name: 'Hydrogen Chloride', geometry: 'Linear' },
+        { formula: 'H2S', name: 'Hydrogen Sulfide', geometry: 'Bent' }
+    ];
+
+    examples.forEach(ex => {
+        const card = document.createElement('div');
+        card.className = 'bg-surface-dark rounded-lg border border-border-dark p-4 hover:border-primary/50 transition-all cursor-pointer group';
+        card.innerHTML = `
+            <div class="text-center mb-3">
+                <div class="text-3xl font-bold text-white mb-1">${ex.formula}</div>
+                <div class="flex justify-center gap-1 mb-2">
+                    <span class="text-xs text-text-secondary">${ex.geometry}</span>
+                </div>
+            </div>
+            <div class="text-text-secondary text-xs text-center group-hover:text-white transition-colors">${ex.name}</div>
+        `;
+        card.addEventListener('click', () => {
+            input.value = ex.formula;
+            generateStructure(ex.formula);
+            resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+        exampleGrid.appendChild(card);
+    });
+}
+
+// Event listeners
+generateBtn.addEventListener('click', () => {
+    const formula = input.value.trim().toUpperCase().replace(/\s+/g, '');
+    generateStructure(formula);
+});
+
+input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        const formula = input.value.trim().toUpperCase().replace(/\s+/g, '');
+        generateStructure(formula);
+    }
+});
+
+randomBtn.addEventListener('click', () => {
+    const formulas = Object.keys(molecules);
+    const randomFormula = formulas[Math.floor(Math.random() * formulas.length)];
+    input.value = randomFormula;
+    generateStructure(randomFormula);
+});
+
+// Main generation function
+function generateStructure(formula) {
+    // Resolve aliases
+    let lookupFormula = formula.toUpperCase().replace(/\s+/g, '');
+    if (moleculeAliases[lookupFormula]) {
+        lookupFormula = moleculeAliases[lookupFormula];
+    }
+    
+    const molecule = molecules[lookupFormula];
+    
+    if (!molecule) {
+        showError(`Sorry, "${formula}" is not supported. Try: H2O, CO2, NH3, CH4, SO2, SO3, H2SO4, HCl, H2S, O2, N2, water, methane, ammonia`);
+        return;
+    }
+
+    // Store current molecule
+    currentMolecule = molecule;
+
+    // Show result section
+    resultSection.style.display = 'block';
+    
+    // Update title
+    document.getElementById('result-title').textContent = `Result: ${molecule.name} (${molecule.formula})`;
+
+    // Update properties
+    updateProperties(molecule);
+
+    // Update structure diagram
+    updateStructure(molecule);
+
+    // Update element composition
+    updateElementComposition(molecule);
+
+    // Update composition chart
+    updateCompositionChart(molecule);
+
+    // Scroll to result
+    setTimeout(() => {
+        resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+}
+
+// Update properties panel
+function updateProperties(molecule) {
+    document.getElementById('prop-valence').textContent = molecule.valenceElectrons;
+    document.getElementById('prop-charge').textContent = molecule.netCharge;
+    document.getElementById('prop-mass').textContent = `${molecule.molarMass.toFixed(3)} g/mol`;
+    
+    const centralAtomEl = document.getElementById('prop-central');
+    centralAtomEl.textContent = molecule.centralAtom;
+    centralAtomEl.className = `text-${molecule.centralAtomColor}-400 font-bold`;
+    
+    document.getElementById('prop-geometry').textContent = molecule.geometry;
+    document.getElementById('prop-angle').textContent = molecule.bondAngle;
+    document.getElementById('prop-hybrid').textContent = molecule.hybridization;
+}
+
+// Update element composition list
+function updateElementComposition(molecule) {
+    const elementList = document.getElementById('element-list');
+    elementList.innerHTML = '';
+    
+    for (const [symbol, data] of Object.entries(molecule.elements)) {
+        const totalMass = data.count * data.mass;
+        const percentage = (totalMass / molecule.molarMass * 100).toFixed(2);
+        
+        const elementDiv = document.createElement('div');
+        elementDiv.className = 'flex items-center justify-between p-2 bg-background-dark rounded border border-border-dark';
+        elementDiv.innerHTML = `
+            <div class="flex items-center gap-2">
+                <div class="size-6 rounded flex items-center justify-center text-xs font-bold" style="background-color: ${data.color}20; color: ${data.color};">
+                    ${symbol}
+                </div>
+                <span class="text-sm text-white">${data.name}</span>
+            </div>
+            <div class="text-right">
+                <div class="text-xs text-text-secondary">×${data.count}</div>
+                <div class="text-xs font-bold text-white">${percentage}%</div>
+            </div>
+        `;
+        elementList.appendChild(elementDiv);
+    }
+}
+
+// Update composition chart
+function updateCompositionChart(molecule) {
+    const ctx = document.getElementById('composition-chart');
+    
+    // Destroy existing chart
+    if (compositionChart) {
+        compositionChart.destroy();
+    }
+    
+    // Prepare data
+    const labels = [];
+    const data = [];
+    const colors = [];
+    
+    for (const [symbol, elementData] of Object.entries(molecule.elements)) {
+        const totalMass = elementData.count * elementData.mass;
+        const percentage = (totalMass / molecule.molarMass * 100);
+        
+        labels.push(`${symbol} (${percentage.toFixed(1)}%)`);
+        data.push(percentage);
+        colors.push(elementData.color);
+    }
+    
+    // Create new chart
+    compositionChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: data,
+                backgroundColor: colors,
+                borderColor: '#192434',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#91a9ca',
+                        font: {
+                            family: 'Lexend',
+                            size: 11
+                        },
+                        padding: 10
+                    }
+                }
+            }
+        }
+    });
+}
+
+// Update structure diagram - keeping water structure, adding other cases
+function updateStructure(molecule) {
+    const container = document.getElementById('structure-diagram');
+    let structureHTML = '';
+
+    switch(molecule.structure) {
+        case 'water':
+            structureHTML = `
+                <div class="text-center relative z-10">
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="flex items-center gap-8 relative">
+                            <div class="absolute -top-6 left-1/2 -translate-x-1/2 flex gap-1">
+                                <div class="size-2 rounded-full bg-primary animate-pulse"></div>
+                                <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.1s;"></div>
+                            </div>
+                            <div class="size-16 rounded-full bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(239,68,68,0.4)] animate-pulse">O</div>
+                            <div class="absolute -right-6 top-1/2 -translate-y-1/2 flex flex-col gap-1">
+                                <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.2s;"></div>
+                                <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.3s;"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between w-40 h-12 relative">
+                            <div class="w-1 h-14 bg-gradient-to-b from-text-secondary to-transparent rotate-[30deg] origin-top-right absolute left-10"></div>
+                            <div class="w-1 h-14 bg-gradient-to-b from-text-secondary to-transparent -rotate-[30deg] origin-top-left absolute right-10"></div>
+                        </div>
+                        <div class="flex gap-20 mt-1">
+                            <div class="size-12 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform">H</div>
+                            <div class="size-12 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform">H</div>
+                        </div>
+                    </div>
+                </div>`;
+            break;
+
+        case 'co2':
+            structureHTML = `
+                <div class="text-center relative z-10">
+                    <div class="flex items-center justify-center gap-6">
+                        <div class="relative">
+                            <div class="size-14 rounded-full bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-white font-bold text-xl shadow-[0_0_20px_rgba(239,68,68,0.4)] hover:scale-110 transition-transform">O</div>
+                            <div class="absolute -top-2 -right-2 flex gap-1">
+                                <div class="size-2 rounded-full bg-primary animate-pulse"></div>
+                                <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.1s;"></div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <div class="w-16 h-0.5 bg-gradient-to-r from-text-secondary via-primary/50 to-text-secondary"></div>
+                            <div class="w-16 h-0.5 bg-gradient-to-r from-text-secondary via-primary/50 to-text-secondary"></div>
+                        </div>
+                        <div class="size-16 rounded-full bg-gray-500/20 border-2 border-gray-400 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_15px_rgba(156,163,175,0.3)] animate-pulse">C</div>
+                        <div class="flex flex-col gap-1">
+                            <div class="w-16 h-0.5 bg-gradient-to-r from-text-secondary via-primary/50 to-text-secondary"></div>
+                            <div class="w-16 h-0.5 bg-gradient-to-r from-text-secondary via-primary/50 to-text-secondary"></div>
+                        </div>
+                        <div class="relative">
+                            <div class="size-14 rounded-full bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-white font-bold text-xl shadow-[0_0_20px_rgba(239,68,68,0.4)] hover:scale-110 transition-transform">O</div>
+                            <div class="absolute -top-2 -left-2 flex gap-1">
+                                <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.2s;"></div>
+                                <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.3s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            break;
+
+        case 'nh3':
+            structureHTML = `
+                <div class="text-center relative z-10">
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="relative">
+                            <div class="absolute -top-6 left-1/2 -translate-x-1/2 flex gap-1">
+                                <div class="size-2 rounded-full bg-primary animate-pulse"></div>
+                                <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.1s;"></div>
+                            </div>
+                            <div class="size-16 rounded-full bg-blue-500/20 border-2 border-blue-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(59,130,246,0.4)] animate-pulse">N</div>
+                        </div>
+                        <div class="flex justify-between w-48 h-12 relative">
+                            <div class="w-1 h-12 bg-gradient-to-b from-text-secondary to-transparent rotate-[35deg] origin-top-right absolute left-8"></div>
+                            <div class="w-1 h-12 bg-gradient-to-b from-text-secondary to-transparent absolute left-1/2 -translate-x-1/2"></div>
+                            <div class="w-1 h-12 bg-gradient-to-b from-text-secondary to-transparent -rotate-[35deg] origin-top-left absolute right-8"></div>
+                        </div>
+                        <div class="flex gap-12 mt-1">
+                            <div class="size-11 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white font-bold text-lg hover:scale-110 transition-transform">H</div>
+                            <div class="size-11 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white font-bold text-lg hover:scale-110 transition-transform">H</div>
+                            <div class="size-11 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white font-bold text-lg hover:scale-110 transition-transform">H</div>
+                        </div>
+                    </div>
+                </div>`;
+            break;
+
+        case 'ch4':
+            structureHTML = `
+                <div class="text-center relative z-10">
+                    <div class="relative flex items-center justify-center">
+                        <div class="size-16 rounded-full bg-gray-500/20 border-2 border-gray-400 flex items-center justify-center text-white font-bold text-2xl z-10 shadow-[0_0_15px_rgba(156,163,175,0.3)] animate-pulse">C</div>
+                        
+                        <div class="size-11 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white font-bold text-lg absolute -top-16 hover:scale-110 transition-transform">H</div>
+                        <div class="size-11 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white font-bold text-lg absolute -bottom-16 hover:scale-110 transition-transform">H</div>
+                        <div class="size-11 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white font-bold text-lg absolute -left-20 hover:scale-110 transition-transform">H</div>
+                        <div class="size-11 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white font-bold text-lg absolute -right-20 hover:scale-110 transition-transform">H</div>
+                        
+                        <div class="w-1 h-16 bg-gradient-to-b from-text-secondary to-transparent absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full"></div>
+                        <div class="w-1 h-16 bg-gradient-to-t from-text-secondary to-transparent absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full"></div>
+                        <div class="w-16 h-1 bg-gradient-to-r from-text-secondary to-transparent absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full"></div>
+                        <div class="w-16 h-1 bg-gradient-to-l from-text-secondary to-transparent absolute right-0 top-1/2 -translate-y-1/2 translate-x-full"></div>
+                    </div>
+                </div>`;
+            break;
+
+        case 'so2':
+            structureHTML = `
+                <div class="text-center relative z-10">
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="flex items-center gap-8 relative">
+                            <div class="absolute -top-6 left-1/2 -translate-x-1/2 flex gap-1">
+                                <div class="size-2 rounded-full bg-primary animate-pulse"></div>
+                                <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.1s;"></div>
+                            </div>
+                            <div class="size-16 rounded-full bg-yellow-500/20 border-2 border-yellow-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(234,179,8,0.4)] animate-pulse">S</div>
+                        </div>
+                        <div class="flex justify-between w-40 h-12 relative">
+                            <div class="flex flex-col gap-1 absolute left-8 rotate-[25deg] origin-top-right">
+                                <div class="w-12 h-0.5 bg-gradient-to-r from-text-secondary to-transparent"></div>
+                                <div class="w-12 h-0.5 bg-gradient-to-r from-text-secondary to-transparent"></div>
+                            </div>
+                            <div class="flex flex-col gap-1 absolute right-8 -rotate-[25deg] origin-top-left">
+                                <div class="w-12 h-0.5 bg-gradient-to-l from-text-secondary to-transparent"></div>
+                                <div class="w-12 h-0.5 bg-gradient-to-l from-text-secondary to-transparent"></div>
+                            </div>
+                        </div>
+                        <div class="flex gap-20 mt-4">
+                            <div class="relative">
+                                <div class="size-14 rounded-full bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-white font-bold text-xl shadow-[0_0_20px_rgba(239,68,68,0.4)] hover:scale-110 transition-transform">O</div>
+                                <div class="absolute -bottom-3 -left-2 flex gap-1">
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.2s;"></div>
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.3s;"></div>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <div class="size-14 rounded-full bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-white font-bold text-xl shadow-[0_0_20px_rgba(239,68,68,0.4)] hover:scale-110 transition-transform">O</div>
+                                <div class="absolute -bottom-3 -right-2 flex gap-1">
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.4s;"></div>
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.5s;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            break;
+
+        case 'hcl':
+            structureHTML = `
+                <div class="text-center relative z-10">
+                    <div class="flex items-center justify-center gap-8">
+                        <div class="size-14 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform">H</div>
+                        <div class="w-20 h-1 bg-gradient-to-r from-white via-primary/50 to-green-500"></div>
+                        <div class="relative">
+                            <div class="size-16 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(34,197,94,0.4)] animate-pulse">Cl</div>
+                            <div class="absolute -top-3 -right-3 flex flex-col gap-1">
+                                <div class="flex gap-1">
+                                    <div class="size-2 rounded-full bg-primary animate-pulse"></div>
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.1s;"></div>
+                                </div>
+                                <div class="flex gap-1">
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.2s;"></div>
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.3s;"></div>
+                                </div>
+                                <div class="flex gap-1">
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.4s;"></div>
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.5s;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            break;
+
+        case 'h2s':
+            structureHTML = `
+                <div class="text-center relative z-10">
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="flex items-center gap-8 relative">
+                            <div class="absolute -top-6 left-1/2 -translate-x-1/2 flex gap-1">
+                                <div class="size-2 rounded-full bg-primary animate-pulse"></div>
+                                <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.1s;"></div>
+                            </div>
+                            <div class="size-16 rounded-full bg-yellow-500/20 border-2 border-yellow-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(234,179,8,0.4)] animate-pulse">S</div>
+                            <div class="absolute -right-6 top-1/2 -translate-y-1/2 flex flex-col gap-1">
+                                <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.2s;"></div>
+                                <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.3s;"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between w-40 h-12 relative">
+                            <div class="w-1 h-14 bg-gradient-to-b from-text-secondary to-transparent rotate-[30deg] origin-top-right absolute left-10"></div>
+                            <div class="w-1 h-14 bg-gradient-to-b from-text-secondary to-transparent -rotate-[30deg] origin-top-left absolute right-10"></div>
+                        </div>
+                        <div class="flex gap-20 mt-1">
+                            <div class="size-12 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform">H</div>
+                            <div class="size-12 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform">H</div>
+                        </div>
+                    </div>
+                </div>`;
+            break;
+
+        case 'o2':
+            structureHTML = `
+                <div class="text-center relative z-10">
+                    <div class="flex items-center justify-center gap-6">
+                        <div class="relative">
+                            <div class="size-16 rounded-full bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(239,68,68,0.4)] hover:scale-110 transition-transform">O</div>
+                            <div class="absolute -top-3 -left-3 flex flex-col gap-1">
+                                <div class="flex gap-1">
+                                    <div class="size-2 rounded-full bg-primary animate-pulse"></div>
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.1s;"></div>
+                                </div>
+                                <div class="flex gap-1">
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.2s;"></div>
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.3s;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <div class="w-16 h-0.5 bg-gradient-to-r from-red-500 via-primary/50 to-red-500"></div>
+                            <div class="w-16 h-0.5 bg-gradient-to-r from-red-500 via-primary/50 to-red-500"></div>
+                        </div>
+                        <div class="relative">
+                            <div class="size-16 rounded-full bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(239,68,68,0.4)] hover:scale-110 transition-transform">O</div>
+                            <div class="absolute -top-3 -right-3 flex flex-col gap-1">
+                                <div class="flex gap-1">
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.4s;"></div>
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.5s;"></div>
+                                </div>
+                                <div class="flex gap-1">
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.6s;"></div>
+                                    <div class="size-2 rounded-full bg-primary animate-pulse" style="animation-delay: 0.7s;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            break;
+
+        case 'so3':
+            structureHTML = `
+                <div class="text-center relative z-10">
+                    <div class="flex flex-col items-center">
+                        <div class="size-16 rounded-full bg-yellow-500/20 border-2 border-yellow-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(234,179,8,0.4)] animate-pulse mb-8">S</div>
+                        
+                        <div class="relative w-48 h-32">
+                            <div class="absolute -top-16 left-1/2 -translate-x-1/2">
+                                <div class="size-14 rounded-full bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform">O</div>
+                            </div>
+                            <div class="absolute top-8 -left-8">
+                                <div class="size-14 rounded-full bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform">O</div>
+                            </div>
+                            <div class="absolute top-8 -right-8">
+                                <div class="size-14 rounded-full bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform">O</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            break;
+
+        case 'h2so4':
+            structureHTML = `
+                <div class="text-center relative z-10">
+                    <div class="flex flex-col items-center gap-4">
+                        <div class="text-white text-sm">H-O-S(=O)(=O)-O-H</div>
+                        <div class="size-16 rounded-full bg-yellow-500/20 border-2 border-yellow-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(234,179,8,0.4)] animate-pulse">S</div>
+                        <div class="text-text-secondary text-xs">Tetrahedral geometry</div>
+                    </div>
+                </div>`;
+            break;
+
+        case 'n2':
+            structureHTML = `
+                <div class="text-center relative z-10">
+                    <div class="flex items-center justify-center gap-4">
+                        <div class="size-16 rounded-full bg-blue-500/20 border-2 border-blue-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(59,130,246,0.4)] animate-pulse">N</div>
+                        <div class="flex flex-col gap-0.5">
+                            <div class="w-16 h-0.5 bg-gradient-to-r from-blue-500 via-primary/50 to-blue-500"></div>
+                            <div class="w-16 h-0.5 bg-gradient-to-r from-blue-500 via-primary/50 to-blue-500"></div>
+                            <div class="w-16 h-0.5 bg-gradient-to-r from-blue-500 via-primary/50 to-blue-500"></div>
+                        </div>
+                        <div class="size-16 rounded-full bg-blue-500/20 border-2 border-blue-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(59,130,246,0.4)] animate-pulse">N</div>
+                    </div>
+                    <div class="text-text-secondary text-xs mt-4">Triple bond</div>
+                </div>`;
+            break;
+
+        case 'h2o2':
+            structureHTML = `
+                <div class="text-center relative z-10">
+                    <div class="flex items-center justify-center gap-6">
+                        <div class="size-12 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform">H</div>
+                        <div class="w-10 h-1 bg-gradient-to-r from-white to-red-500"></div>
+                        <div class="size-16 rounded-full bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(239,68,68,0.4)] animate-pulse">O</div>
+                        <div class="w-10 h-1 bg-gradient-to-r from-red-500 to-red-500"></div>
+                        <div class="size-16 rounded-full bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(239,68,68,0.4)] animate-pulse">O</div>
+                        <div class="w-10 h-1 bg-gradient-to-r from-red-500 to-white"></div>
+                        <div class="size-12 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform">H</div>
+                    </div>
+                </div>`;
+            break;
+
+        case 'hf':
+            structureHTML = `
+                <div class="text-center relative z-10">
+                    <div class="flex items-center justify-center gap-8">
+                        <div class="size-14 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white font-bold text-xl hover:scale-110 transition-transform">H</div>
+                        <div class="w-20 h-1 bg-gradient-to-r from-white via-primary/50 to-cyan-500"></div>
+                        <div class="relative">
+                            <div class="size-16 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(6,182,212,0.4)] animate-pulse">F</div>
+                        </div>
+                    </div>
+                </div>`;
+            break;
+
+        case 'cl2':
+            structureHTML = `
+                <div class="text-center relative z-10">
+                    <div class="flex items-center justify-center gap-6">
+                        <div class="size-16 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(34,197,94,0.4)] animate-pulse">Cl</div>
+                        <div class="w-20 h-1 bg-gradient-to-r from-green-500 via-primary/50 to-green-500"></div>
+                        <div class="size-16 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center text-white font-bold text-2xl shadow-[0_0_20px_rgba(34,197,94,0.4)] animate-pulse">Cl</div>
+                    </div>
+                </div>`;
+            break;
+
+        default:
+            structureHTML = '<div class="text-white">Structure diagram loading...</div>';
+    }
+
+    container.innerHTML = structureHTML;
+}
+
+// Show error message
+function showError(message) {
+    const container = document.getElementById('structure-diagram');
+    container.innerHTML = `
+        <div class="flex flex-col items-center justify-center gap-4 text-center p-8">
+            <span class="material-symbols-outlined text-red-400 text-5xl">error</span>
+            <p class="text-text-secondary">${message}</p>
+        </div>
+    `;
+    
+    resultSection.style.display = 'block';
+    resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// PNG Download
+document.getElementById('download-png-btn').addEventListener('click', async function() {
+    const diagramElement = document.getElementById('structure-diagram');
+    
+    try {
+        const canvas = await html2canvas(diagramElement, {
+            backgroundColor: '#0f151e',
+            scale: 2,
+            logging: false
+        });
+        
+        const link = document.createElement('a');
+        const fileName = currentMolecule ? 
+            `lewis-${currentMolecule.name.toLowerCase().replace(/\s+/g, '-')}.png` : 
+            'lewis-structure.png';
+        link.download = fileName;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        
+        const btn = this;
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<span class="material-symbols-outlined text-lg">check_circle</span><span>Downloaded!</span>';
+        setTimeout(() => {
+            btn.innerHTML = originalHTML;
+        }, 2000);
+    } catch (error) {
+        console.error('Download error:', error);
+        alert('Download failed. Please try again.');
+    }
+});
+
+// SVG Download
+document.getElementById('download-svg-btn').addEventListener('click', function() {
+    const diagramElement = document.getElementById('structure-diagram');
+    
+    const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+    <rect width="100%" height="100%" fill="#0f151e"/>
+    <foreignObject width="100%" height="100%">
+        <div xmlns="http://www.w3.org/1999/xhtml" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+            ${diagramElement.innerHTML}
+        </div>
+    </foreignObject>
+</svg>`;
+    
+    const blob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    const fileName = currentMolecule ? 
+        `lewis-${currentMolecule.name.toLowerCase().replace(/\s+/g, '-')}.svg` : 
+        'lewis-structure.svg';
+    link.download = fileName;
+    link.href = url;
+    link.click();
+    URL.revokeObjectURL(url);
+    
+    const btn = this;
+    const originalHTML = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined text-lg">check_circle</span><span>Downloaded!</span>';
+    setTimeout(() => {
+        btn.innerHTML = originalHTML;
+    }, 2000);
+});
+
+// Initialize on page load
+window.addEventListener('load', () => {
+    generateExampleCards();
+    generateStructure('H2O');
+});
+</script>
+
+</body>
+</html>
