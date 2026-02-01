@@ -554,247 +554,158 @@ const moleculeAliases = {
     'HYDROGEN FLUORIDE': 'HF',
     'HYDROGENFLUORIDE': 'HF',
     'CHLORINE': 'CL2'
+    'ETHANE': 'C2H6',
+    'ETHYLENE': 'C2H4',
+    'ACETYLENE': 'C2H2',
+    'PROPANE': 'C3H8',
+    'METHANOL': 'CH3OH',
+    'ETHANOL': 'C2H5OH',
+    'FORMALDEHYDE': 'CH2O',
+    'ACETIC ACID': 'CH3COOH',
+    'METHYLAMINE': 'CH3NH2',
+    'CHLOROFORM': 'CHCL3',
+    'CARBON TETRACHLORIDE': 'CCL4',
+    'NITRIC ACID': 'HNO3',
+    'PHOSPHORIC ACID': 'H3PO4',
+    'OZONE': 'O3',
+    'CARBON DISULFIDE': 'CS2',
+    'PHOSPHINE': 'PH3',
+    'SILANE': 'SIH4'
 };
-
+const elementColors = {
+    'H': '#e5e7eb',   // 白色 - 氢
+    'C': '#9ca3af',   // 灰色 - 碳
+    'N': '#3b82f6',   // 蓝色 - 氮
+    'O': '#ef4444',   // 红色 - 氧
+    'F': '#06b6d4',   // 青色 - 氟
+    'Cl': '#22c55e',  // 绿色 - 氯
+    'Br': '#f97316',  // 橙色 - 溴
+    'I': '#a855f7',   // 紫色 - 碘
+    'S': '#eab308',   // 黄色 - 硫
+    'P': '#f97316',   // 橙色 - 磷
+    'B': '#ec4899',   // 粉色 - 硼
+    'Si': '#64748b',  // 板岩色 - 硅
+    'Xe': '#a855f7'   // 紫色 - 氙
+};
 const molecules = {
-    'H2O': {
-        name: 'Water',
-        formula: 'H₂O',
-        valenceElectrons: 8,
-        netCharge: 0,
-        centralAtom: 'Oxygen',
-        centralAtomColor: 'red',
-        geometry: 'Bent (V-shaped)',
-        bondAngle: '104.5°',
-        hybridization: 'sp³',
-        structure: 'water',
-        molarMass: 18.015,
-        elements: {
-            'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' },
-            'O': { count: 1, mass: 15.999, color: '#ef4444', name: 'Oxygen' }
-        }
-    },
-    'CO2': {
-        name: 'Carbon Dioxide',
-        formula: 'CO₂',
-        valenceElectrons: 16,
-        netCharge: 0,
-        centralAtom: 'Carbon',
-        centralAtomColor: 'gray',
-        geometry: 'Linear',
-        bondAngle: '180°',
-        hybridization: 'sp',
-        structure: 'co2',
-        molarMass: 44.009,
-        elements: {
-            'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' },
-            'O': { count: 2, mass: 15.999, color: '#ef4444', name: 'Oxygen' }
-        }
-    },
-    'CH4': {
-        name: 'Methane',
-        formula: 'CH₄',
-        valenceElectrons: 8,
-        netCharge: 0,
-        centralAtom: 'Carbon',
-        centralAtomColor: 'gray',
-        geometry: 'Tetrahedral',
-        bondAngle: '109.5°',
-        hybridization: 'sp³',
-        structure: 'ch4',
-        molarMass: 16.043,
-        elements: {
-            'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' },
-            'H': { count: 4, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }
-        }
-    },
-    'NH3': {
-        name: 'Ammonia',
-        formula: 'NH₃',
-        valenceElectrons: 8,
-        netCharge: 0,
-        centralAtom: 'Nitrogen',
-        centralAtomColor: 'blue',
-        geometry: 'Trigonal Pyramidal',
-        bondAngle: '107°',
-        hybridization: 'sp³',
-        structure: 'nh3',
-        molarMass: 17.031,
-        elements: {
-            'N': { count: 1, mass: 14.007, color: '#3b82f6', name: 'Nitrogen' },
-            'H': { count: 3, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }
-        }
-    },
-    'HCL': {
-        name: 'Hydrogen Chloride',
-        formula: 'HCl',
-        valenceElectrons: 8,
-        netCharge: 0,
-        centralAtom: 'Chlorine',
-        centralAtomColor: 'green',
-        geometry: 'Linear',
-        bondAngle: '180°',
-        hybridization: 'sp',
-        structure: 'hcl',
-        molarMass: 36.458,
-        elements: {
-            'H': { count: 1, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' },
-            'Cl': { count: 1, mass: 35.45, color: '#22c55e', name: 'Chlorine' }
-        }
-    },
-    'H2S': {
-        name: 'Hydrogen Sulfide',
-        formula: 'H₂S',
-        valenceElectrons: 8,
-        netCharge: 0,
-        centralAtom: 'Sulfur',
-        centralAtomColor: 'yellow',
-        geometry: 'Bent',
-        bondAngle: '92°',
-        hybridization: 'sp³',
-        structure: 'h2s',
-        molarMass: 34.081,
-        elements: {
-            'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' },
-            'S': { count: 1, mass: 32.06, color: '#eab308', name: 'Sulfur' }
-        }
-    },
-    'SO2': {
-        name: 'Sulfur Dioxide',
-        formula: 'SO₂',
-        valenceElectrons: 18,
-        netCharge: 0,
-        centralAtom: 'Sulfur',
-        centralAtomColor: 'yellow',
-        geometry: 'Bent',
-        bondAngle: '119°',
-        hybridization: 'sp²',
-        structure: 'so2',
-        molarMass: 64.066,
-        elements: {
-            'S': { count: 1, mass: 32.06, color: '#eab308', name: 'Sulfur' },
-            'O': { count: 2, mass: 15.999, color: '#ef4444', name: 'Oxygen' }
-        }
-    },
-    'SO3': {
-        name: 'Sulfur Trioxide',
-        formula: 'SO₃',
-        valenceElectrons: 24,
-        netCharge: 0,
-        centralAtom: 'Sulfur',
-        centralAtomColor: 'yellow',
-        geometry: 'Trigonal Planar',
-        bondAngle: '120°',
-        hybridization: 'sp²',
-        structure: 'so3',
-        molarMass: 80.066,
-        elements: {
-            'S': { count: 1, mass: 32.06, color: '#eab308', name: 'Sulfur' },
-            'O': { count: 3, mass: 15.999, color: '#ef4444', name: 'Oxygen' }
-        }
-    },
-    'H2SO4': {
-        name: 'Sulfuric Acid',
-        formula: 'H₂SO₄',
-        valenceElectrons: 32,
-        netCharge: 0,
-        centralAtom: 'Sulfur',
-        centralAtomColor: 'yellow',
-        geometry: 'Tetrahedral',
-        bondAngle: '109.5°',
-        hybridization: 'sp³',
-        structure: 'h2so4',
-        molarMass: 98.079,
-        elements: {
-            'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' },
-            'S': { count: 1, mass: 32.06, color: '#eab308', name: 'Sulfur' },
-            'O': { count: 4, mass: 15.999, color: '#ef4444', name: 'Oxygen' }
-        }
-    },
-    'O2': {
-        name: 'Oxygen',
-        formula: 'O₂',
-        valenceElectrons: 12,
-        netCharge: 0,
-        centralAtom: 'Oxygen',
-        centralAtomColor: 'red',
-        geometry: 'Linear',
-        bondAngle: '180°',
-        hybridization: 'sp²',
-        structure: 'o2',
-        molarMass: 31.998,
-        elements: {
-            'O': { count: 2, mass: 15.999, color: '#ef4444', name: 'Oxygen' }
-        }
-    },
-    'N2': {
-        name: 'Nitrogen',
-        formula: 'N₂',
-        valenceElectrons: 10,
-        netCharge: 0,
-        centralAtom: 'Nitrogen',
-        centralAtomColor: 'blue',
-        geometry: 'Linear',
-        bondAngle: '180°',
-        hybridization: 'sp',
-        structure: 'n2',
-        molarMass: 28.014,
-        elements: {
-            'N': { count: 2, mass: 14.007, color: '#3b82f6', name: 'Nitrogen' }
-        }
-    },
-    'H2O2': {
-        name: 'Hydrogen Peroxide',
-        formula: 'H₂O₂',
-        valenceElectrons: 14,
-        netCharge: 0,
-        centralAtom: 'Oxygen',
-        centralAtomColor: 'red',
-        geometry: 'Bent',
-        bondAngle: '94.8°',
-        hybridization: 'sp³',
-        structure: 'h2o2',
-        molarMass: 34.015,
-        elements: {
-            'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' },
-            'O': { count: 2, mass: 15.999, color: '#ef4444', name: 'Oxygen' }
-        }
-    },
-    'HF': {
-        name: 'Hydrogen Fluoride',
-        formula: 'HF',
-        valenceElectrons: 8,
-        netCharge: 0,
-        centralAtom: 'Fluorine',
-        centralAtomColor: 'cyan',
-        geometry: 'Linear',
-        bondAngle: '180°',
-        hybridization: 'sp',
-        structure: 'hf',
-        molarMass: 20.006,
-        elements: {
-            'H': { count: 1, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' },
-            'F': { count: 1, mass: 18.998, color: '#06b6d4', name: 'Fluorine' }
-        }
-    },
-    'CL2': {
-        name: 'Chlorine',
-        formula: 'Cl₂',
-        valenceElectrons: 14,
-        netCharge: 0,
-        centralAtom: 'Chlorine',
-        centralAtomColor: 'green',
-        geometry: 'Linear',
-        bondAngle: '180°',
-        hybridization: 'sp³',
-        structure: 'cl2',
-        molarMass: 70.906,
-        elements: {
-            'Cl': { count: 2, mass: 35.45, color: '#22c55e', name: 'Chlorine' }
-        }
-    }
-};
+// 基础分子（已有）
+    'H2O': { name: 'Water', formula: 'H₂O', valenceElectrons: 8, netCharge: 0, centralAtom: 'Oxygen', centralAtomColor: 'red', geometry: 'Bent (V-shaped)', bondAngle: '104.5°', hybridization: 'sp³', structure: 'water', molarMass: 18.015, elements: { 'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'O': { count: 1, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    // 简单无机分子
+    'H2': { name: 'Hydrogen Gas', formula: 'H₂', valenceElectrons: 2, netCharge: 0, centralAtom: 'Hydrogen', centralAtomColor: 'gray', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp', structure: 'h2', molarMass: 2.016, elements: { 'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }}},
+    
+    'N2': { name: 'Nitrogen Gas', formula: 'N₂', valenceElectrons: 10, netCharge: 0, centralAtom: 'Nitrogen', centralAtomColor: 'blue', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp', structure: 'n2', molarMass: 28.014, elements: { 'N': { count: 2, mass: 14.007, color: '#3b82f6', name: 'Nitrogen' }}},
+    
+    'O2': { name: 'Oxygen Gas', formula: 'O₂', valenceElectrons: 12, netCharge: 0, centralAtom: 'Oxygen', centralAtomColor: 'red', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp²', structure: 'o2', molarMass: 31.998, elements: { 'O': { count: 2, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    'F2': { name: 'Fluorine Gas', formula: 'F₂', valenceElectrons: 14, netCharge: 0, centralAtom: 'Fluorine', centralAtomColor: 'cyan', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp³', structure: 'f2', molarMass: 37.996, elements: { 'F': { count: 2, mass: 18.998, color: '#06b6d4', name: 'Fluorine' }}},
+    
+    'CL2': { name: 'Chlorine Gas', formula: 'Cl₂', valenceElectrons: 14, netCharge: 0, centralAtom: 'Chlorine', centralAtomColor: 'green', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp³', structure: 'cl2', molarMass: 70.906, elements: { 'Cl': { count: 2, mass: 35.45, color: '#22c55e', name: 'Chlorine' }}},
+    
+    'BR2': { name: 'Bromine', formula: 'Br₂', valenceElectrons: 14, netCharge: 0, centralAtom: 'Bromine', centralAtomColor: 'orange', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp³', structure: 'br2', molarMass: 159.808, elements: { 'Br': { count: 2, mass: 79.904, color: '#f97316', name: 'Bromine' }}},
+    
+    // 氢化物
+    'CH4': { name: 'Methane', formula: 'CH₄', valenceElectrons: 8, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Tetrahedral', bondAngle: '109.5°', hybridization: 'sp³', structure: 'ch4', molarMass: 16.043, elements: { 'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'H': { count: 4, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }}},
+    
+    'NH3': { name: 'Ammonia', formula: 'NH₃', valenceElectrons: 8, netCharge: 0, centralAtom: 'Nitrogen', centralAtomColor: 'blue', geometry: 'Trigonal Pyramidal', bondAngle: '107°', hybridization: 'sp³', structure: 'nh3', molarMass: 17.031, elements: { 'N': { count: 1, mass: 14.007, color: '#3b82f6', name: 'Nitrogen' }, 'H': { count: 3, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }}},
+    
+    'PH3': { name: 'Phosphine', formula: 'PH₃', valenceElectrons: 8, netCharge: 0, centralAtom: 'Phosphorus', centralAtomColor: 'orange', geometry: 'Trigonal Pyramidal', bondAngle: '93.5°', hybridization: 'sp³', structure: 'ph3', molarMass: 33.998, elements: { 'P': { count: 1, mass: 30.974, color: '#f97316', name: 'Phosphorus' }, 'H': { count: 3, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }}},
+    
+    'H2S': { name: 'Hydrogen Sulfide', formula: 'H₂S', valenceElectrons: 8, netCharge: 0, centralAtom: 'Sulfur', centralAtomColor: 'yellow', geometry: 'Bent', bondAngle: '92°', hybridization: 'sp³', structure: 'h2s', molarMass: 34.081, elements: { 'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'S': { count: 1, mass: 32.06, color: '#eab308', name: 'Sulfur' }}},
+    
+    'HF': { name: 'Hydrogen Fluoride', formula: 'HF', valenceElectrons: 8, netCharge: 0, centralAtom: 'Fluorine', centralAtomColor: 'cyan', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp', structure: 'hf', molarMass: 20.006, elements: { 'H': { count: 1, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'F': { count: 1, mass: 18.998, color: '#06b6d4', name: 'Fluorine' }}},
+    
+    'HCL': { name: 'Hydrogen Chloride', formula: 'HCl', valenceElectrons: 8, netCharge: 0, centralAtom: 'Chlorine', centralAtomColor: 'green', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp', structure: 'hcl', molarMass: 36.458, elements: { 'H': { count: 1, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'Cl': { count: 1, mass: 35.45, color: '#22c55e', name: 'Chlorine' }}},
+    
+    'HBR': { name: 'Hydrogen Bromide', formula: 'HBr', valenceElectrons: 8, netCharge: 0, centralAtom: 'Bromine', centralAtomColor: 'orange', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp', structure: 'hbr', molarMass: 80.912, elements: { 'H': { count: 1, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'Br': { count: 1, mass: 79.904, color: '#f97316', name: 'Bromine' }}},
+    
+    'HI': { name: 'Hydrogen Iodide', formula: 'HI', valenceElectrons: 8, netCharge: 0, centralAtom: 'Iodine', centralAtomColor: 'purple', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp', structure: 'hi', molarMass: 127.904, elements: { 'H': { count: 1, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'I': { count: 1, mass: 126.904, color: '#a855f7', name: 'Iodine' }}},
+    
+    // 碳氧化物
+    'CO': { name: 'Carbon Monoxide', formula: 'CO', valenceElectrons: 10, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp', structure: 'co', molarMass: 28.010, elements: { 'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'O': { count: 1, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    'CO2': { name: 'Carbon Dioxide', formula: 'CO₂', valenceElectrons: 16, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp', structure: 'co2', molarMass: 44.009, elements: { 'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'O': { count: 2, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    // 氮氧化物
+    'NO': { name: 'Nitric Oxide', formula: 'NO', valenceElectrons: 11, netCharge: 0, centralAtom: 'Nitrogen', centralAtomColor: 'blue', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp', structure: 'no', molarMass: 30.006, elements: { 'N': { count: 1, mass: 14.007, color: '#3b82f6', name: 'Nitrogen' }, 'O': { count: 1, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    'NO2': { name: 'Nitrogen Dioxide', formula: 'NO₂', valenceElectrons: 17, netCharge: 0, centralAtom: 'Nitrogen', centralAtomColor: 'blue', geometry: 'Bent', bondAngle: '134°', hybridization: 'sp²', structure: 'no2', molarMass: 46.005, elements: { 'N': { count: 1, mass: 14.007, color: '#3b82f6', name: 'Nitrogen' }, 'O': { count: 2, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    'N2O': { name: 'Nitrous Oxide', formula: 'N₂O', valenceElectrons: 16, netCharge: 0, centralAtom: 'Nitrogen', centralAtomColor: 'blue', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp', structure: 'n2o', molarMass: 44.013, elements: { 'N': { count: 2, mass: 14.007, color: '#3b82f6', name: 'Nitrogen' }, 'O': { count: 1, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    'N2O4': { name: 'Dinitrogen Tetroxide', formula: 'N₂O₄', valenceElectrons: 34, netCharge: 0, centralAtom: 'Nitrogen', centralAtomColor: 'blue', geometry: 'Planar', bondAngle: '134°', hybridization: 'sp²', structure: 'n2o4', molarMass: 92.011, elements: { 'N': { count: 2, mass: 14.007, color: '#3b82f6', name: 'Nitrogen' }, 'O': { count: 4, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    // 硫氧化物
+    'SO2': { name: 'Sulfur Dioxide', formula: 'SO₂', valenceElectrons: 18, netCharge: 0, centralAtom: 'Sulfur', centralAtomColor: 'yellow', geometry: 'Bent', bondAngle: '119°', hybridization: 'sp²', structure: 'so2', molarMass: 64.066, elements: { 'S': { count: 1, mass: 32.06, color: '#eab308', name: 'Sulfur' }, 'O': { count: 2, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    'SO3': { name: 'Sulfur Trioxide', formula: 'SO₃', valenceElectrons: 24, netCharge: 0, centralAtom: 'Sulfur', centralAtomColor: 'yellow', geometry: 'Trigonal Planar', bondAngle: '120°', hybridization: 'sp²', structure: 'so3', molarMass: 80.066, elements: { 'S': { count: 1, mass: 32.06, color: '#eab308', name: 'Sulfur' }, 'O': { count: 3, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    // 过氧化物
+    'H2O2': { name: 'Hydrogen Peroxide', formula: 'H₂O₂', valenceElectrons: 14, netCharge: 0, centralAtom: 'Oxygen', centralAtomColor: 'red', geometry: 'Bent', bondAngle: '94.8°', hybridization: 'sp³', structure: 'h2o2', molarMass: 34.015, elements: { 'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'O': { count: 2, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    // 简单有机物
+    'C2H6': { name: 'Ethane', formula: 'C₂H₆', valenceElectrons: 14, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Tetrahedral', bondAngle: '109.5°', hybridization: 'sp³', structure: 'c2h6', molarMass: 30.069, elements: { 'C': { count: 2, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'H': { count: 6, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }}},
+    
+    'C2H4': { name: 'Ethylene', formula: 'C₂H₄', valenceElectrons: 12, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Planar', bondAngle: '120°', hybridization: 'sp²', structure: 'c2h4', molarMass: 28.054, elements: { 'C': { count: 2, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'H': { count: 4, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }}},
+    
+    'C2H2': { name: 'Acetylene', formula: 'C₂H₂', valenceElectrons: 10, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp', structure: 'c2h2', molarMass: 26.038, elements: { 'C': { count: 2, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }}},
+    
+    'C3H8': { name: 'Propane', formula: 'C₃H₈', valenceElectrons: 20, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Tetrahedral', bondAngle: '109.5°', hybridization: 'sp³', structure: 'c3h8', molarMass: 44.096, elements: { 'C': { count: 3, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'H': { count: 8, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }}},
+    
+    // 含氧有机物
+    'CH3OH': { name: 'Methanol', formula: 'CH₃OH', valenceElectrons: 14, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Tetrahedral', bondAngle: '109.5°', hybridization: 'sp³', structure: 'ch3oh', molarMass: 32.042, elements: { 'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'H': { count: 4, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'O': { count: 1, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    'C2H5OH': { name: 'Ethanol', formula: 'C₂H₅OH', valenceElectrons: 20, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Tetrahedral', bondAngle: '109.5°', hybridization: 'sp³', structure: 'c2h5oh', molarMass: 46.069, elements: { 'C': { count: 2, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'H': { count: 6, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'O': { count: 1, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    'CH2O': { name: 'Formaldehyde', formula: 'CH₂O', valenceElectrons: 12, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Planar', bondAngle: '120°', hybridization: 'sp²', structure: 'ch2o', molarMass: 30.026, elements: { 'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'O': { count: 1, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    'CH3COOH': { name: 'Acetic Acid', formula: 'CH₃COOH', valenceElectrons: 24, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Mixed', bondAngle: '120°/109.5°', hybridization: 'sp²/sp³', structure: 'ch3cooh', molarMass: 60.052, elements: { 'C': { count: 2, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'H': { count: 4, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'O': { count: 2, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    // 含氮有机物
+    'CH3NH2': { name: 'Methylamine', formula: 'CH₃NH₂', valenceElectrons: 14, netCharge: 0, centralAtom: 'Nitrogen', centralAtomColor: 'blue', geometry: 'Tetrahedral', bondAngle: '109.5°', hybridization: 'sp³', structure: 'ch3nh2', molarMass: 31.057, elements: { 'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'H': { count: 5, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'N': { count: 1, mass: 14.007, color: '#3b82f6', name: 'Nitrogen' }}},
+    
+    'HCN': { name: 'Hydrogen Cyanide', formula: 'HCN', valenceElectrons: 10, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp', structure: 'hcn', molarMass: 27.026, elements: { 'H': { count: 1, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'N': { count: 1, mass: 14.007, color: '#3b82f6', name: 'Nitrogen' }}},
+    
+    // 卤代烃
+    'CH3CL': { name: 'Methyl Chloride', formula: 'CH₃Cl', valenceElectrons: 14, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Tetrahedral', bondAngle: '109.5°', hybridization: 'sp³', structure: 'ch3cl', molarMass: 50.488, elements: { 'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'H': { count: 3, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'Cl': { count: 1, mass: 35.45, color: '#22c55e', name: 'Chlorine' }}},
+    
+    'CH2CL2': { name: 'Dichloromethane', formula: 'CH₂Cl₂', valenceElectrons: 20, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Tetrahedral', bondAngle: '109.5°', hybridization: 'sp³', structure: 'ch2cl2', molarMass: 84.933, elements: { 'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'Cl': { count: 2, mass: 35.45, color: '#22c55e', name: 'Chlorine' }}},
+    
+    'CHCL3': { name: 'Chloroform', formula: 'CHCl₃', valenceElectrons: 26, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Tetrahedral', bondAngle: '109.5°', hybridization: 'sp³', structure: 'chcl3', molarMass: 119.378, elements: { 'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'H': { count: 1, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'Cl': { count: 3, mass: 35.45, color: '#22c55e', name: 'Chlorine' }}},
+    
+    'CCL4': { name: 'Carbon Tetrachloride', formula: 'CCl₄', valenceElectrons: 32, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Tetrahedral', bondAngle: '109.5°', hybridization: 'sp³', structure: 'ccl4', molarMass: 153.823, elements: { 'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'Cl': { count: 4, mass: 35.45, color: '#22c55e', name: 'Chlorine' }}},
+    
+    // 酸
+    'H2SO4': { name: 'Sulfuric Acid', formula: 'H₂SO₄', valenceElectrons: 32, netCharge: 0, centralAtom: 'Sulfur', centralAtomColor: 'yellow', geometry: 'Tetrahedral', bondAngle: '109.5°', hybridization: 'sp³', structure: 'h2so4', molarMass: 98.079, elements: { 'H': { count: 2, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'S': { count: 1, mass: 32.06, color: '#eab308', name: 'Sulfur' }, 'O': { count: 4, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    'HNO3': { name: 'Nitric Acid', formula: 'HNO₃', valenceElectrons: 24, netCharge: 0, centralAtom: 'Nitrogen', centralAtomColor: 'blue', geometry: 'Planar', bondAngle: '120°', hybridization: 'sp²', structure: 'hno3', molarMass: 63.012, elements: { 'H': { count: 1, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'N': { count: 1, mass: 14.007, color: '#3b82f6', name: 'Nitrogen' }, 'O': { count: 3, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    'H3PO4': { name: 'Phosphoric Acid', formula: 'H₃PO₄', valenceElectrons: 32, netCharge: 0, centralAtom: 'Phosphorus', centralAtomColor: 'orange', geometry: 'Tetrahedral', bondAngle: '109.5°', hybridization: 'sp³', structure: 'h3po4', molarMass: 97.994, elements: { 'H': { count: 3, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }, 'P': { count: 1, mass: 30.974, color: '#f97316', name: 'Phosphorus' }, 'O': { count: 4, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    // 膨胀八电子分子
+    'PCL5': { name: 'Phosphorus Pentachloride', formula: 'PCl₅', valenceElectrons: 40, netCharge: 0, centralAtom: 'Phosphorus', centralAtomColor: 'orange', geometry: 'Trigonal Bipyramidal', bondAngle: '90°/120°', hybridization: 'sp³d', structure: 'pcl5', molarMass: 208.239, elements: { 'P': { count: 1, mass: 30.974, color: '#f97316', name: 'Phosphorus' }, 'Cl': { count: 5, mass: 35.45, color: '#22c55e', name: 'Chlorine' }}},
+    
+    'SF6': { name: 'Sulfur Hexafluoride', formula: 'SF₆', valenceElectrons: 48, netCharge: 0, centralAtom: 'Sulfur', centralAtomColor: 'yellow', geometry: 'Octahedral', bondAngle: '90°', hybridization: 'sp³d²', structure: 'sf6', molarMass: 146.055, elements: { 'S': { count: 1, mass: 32.06, color: '#eab308', name: 'Sulfur' }, 'F': { count: 6, mass: 18.998, color: '#06b6d4', name: 'Fluorine' }}},
+    
+    'XEF4': { name: 'Xenon Tetrafluoride', formula: 'XeF₄', valenceElectrons: 36, netCharge: 0, centralAtom: 'Xenon', centralAtomColor: 'purple', geometry: 'Square Planar', bondAngle: '90°', hybridization: 'sp³d²', structure: 'xef4', molarMass: 207.283, elements: { 'Xe': { count: 1, mass: 131.293, color: '#a855f7', name: 'Xenon' }, 'F': { count: 4, mass: 18.998, color: '#06b6d4', name: 'Fluorine' }}},
+    
+    // 硼化合物
+    'BF3': { name: 'Boron Trifluoride', formula: 'BF₃', valenceElectrons: 24, netCharge: 0, centralAtom: 'Boron', centralAtomColor: 'pink', geometry: 'Trigonal Planar', bondAngle: '120°', hybridization: 'sp²', structure: 'bf3', molarMass: 67.806, elements: { 'B': { count: 1, mass: 10.81, color: '#ec4899', name: 'Boron' }, 'F': { count: 3, mass: 18.998, color: '#06b6d4', name: 'Fluorine' }}},
+    
+    'BCL3': { name: 'Boron Trichloride', formula: 'BCl₃', valenceElectrons: 24, netCharge: 0, centralAtom: 'Boron', centralAtomColor: 'pink', geometry: 'Trigonal Planar', bondAngle: '120°', hybridization: 'sp²', structure: 'bcl3', molarMass: 117.169, elements: { 'B': { count: 1, mass: 10.81, color: '#ec4899', name: 'Boron' }, 'Cl': { count: 3, mass: 35.45, color: '#22c55e', name: 'Chlorine' }}},
+    
+    // 硅化合物
+    'SIH4': { name: 'Silane', formula: 'SiH₄', valenceElectrons: 8, netCharge: 0, centralAtom: 'Silicon', centralAtomColor: 'slate', geometry: 'Tetrahedral', bondAngle: '109.5°', hybridization: 'sp³', structure: 'sih4', molarMass: 32.117, elements: { 'Si': { count: 1, mass: 28.085, color: '#64748b', name: 'Silicon' }, 'H': { count: 4, mass: 1.008, color: '#e5e7eb', name: 'Hydrogen' }}},
+    
+    'SICL4': { name: 'Silicon Tetrachloride', formula: 'SiCl₄', valenceElectrons: 32, netCharge: 0, centralAtom: 'Silicon', centralAtomColor: 'slate', geometry: 'Tetrahedral', bondAngle: '109.5°', hybridization: 'sp³', structure: 'sicl4', molarMass: 169.898, elements: { 'Si': { count: 1, mass: 28.085, color: '#64748b', name: 'Silicon' }, 'Cl': { count: 4, mass: 35.45, color: '#22c55e', name: 'Chlorine' }}},
+    
+    // 其他重要分子
+    'O3': { name: 'Ozone', formula: 'O₃', valenceElectrons: 18, netCharge: 0, centralAtom: 'Oxygen', centralAtomColor: 'red', geometry: 'Bent', bondAngle: '117°', hybridization: 'sp²', structure: 'o3', molarMass: 47.998, elements: { 'O': { count: 3, mass: 15.999, color: '#ef4444', name: 'Oxygen' }}},
+    
+    'CS2': { name: 'Carbon Disulfide', formula: 'CS₂', valenceElectrons: 16, netCharge: 0, centralAtom: 'Carbon', centralAtomColor: 'gray', geometry: 'Linear', bondAngle: '180°', hybridization: 'sp', structure: 'cs2', molarMass: 76.141, elements: { 'C': { count: 1, mass: 12.011, color: '#9ca3af', name: 'Carbon' }, 'S': { count: 2, mass: 32.06, color: '#eab308', name: 'Sulfur' }}},
 
+};
+console.log(`Extended molecules database loaded: ${Object.keys(extendedMolecules).length} molecules`);
 // DOM elements
 const input = document.getElementById('formula-input');
 const generateBtn = document.getElementById('generate-btn');
@@ -809,15 +720,19 @@ let currentMolecule = null;
 // Generate example cards
 function generateExampleCards() {
     const examples = [
-        { formula: 'CO2', name: 'Carbon Dioxide', geometry: 'Linear' },
-        { formula: 'NH3', name: 'Ammonia', geometry: 'Trigonal' },
-        { formula: 'CH4', name: 'Methane', geometry: 'Tetrahedral' },
-        { formula: 'SO2', name: 'Sulfur Dioxide', geometry: 'Bent' },
-        { formula: 'SO3', name: 'Sulfur Trioxide', geometry: 'Trigonal' },
-        { formula: 'H2SO4', name: 'Sulfuric Acid', geometry: 'Tetrahedral' },
-        { formula: 'HCL', name: 'Hydrogen Chloride', geometry: 'Linear' },
-        { formula: 'H2S', name: 'Hydrogen Sulfide', geometry: 'Bent' }
-    ];
+    { formula: 'H2O', name: 'Water', geometry: 'Bent' },
+    { formula: 'CO2', name: 'Carbon Dioxide', geometry: 'Linear' },
+    { formula: 'NH3', name: 'Ammonia', geometry: 'Trigonal' },
+    { formula: 'CH4', name: 'Methane', geometry: 'Tetrahedral' },
+    { formula: 'C2H4', name: 'Ethylene', geometry: 'Planar' },
+    { formula: 'BF3', name: 'Boron Trifluoride', geometry: 'Trigonal' },
+    { formula: 'PCL5', name: 'Phosphorus Pentachloride', geometry: 'Bipyramidal' },
+    { formula: 'SF6', name: 'Sulfur Hexafluoride', geometry: 'Octahedral' },
+    { formula: 'O3', name: 'Ozone', geometry: 'Bent' },
+    { formula: 'HNO3', name: 'Nitric Acid', geometry: 'Planar' },
+    { formula: 'CH3OH', name: 'Methanol', geometry: 'Tetrahedral' },
+    { formula: 'CCL4', name: 'Carbon Tetrachloride', geometry: 'Tetrahedral' }
+];
 
     examples.forEach(ex => {
         const card = document.createElement('div');
@@ -1003,10 +918,20 @@ function updateCompositionChart(molecule) {
 function updateStructure(molecule) {
     const container = document.getElementById('structure-diagram');
     let structureHTML = '';
-
+// 简单的通用模板（适用于大部分新分子）
+case 'generic_linear':  // 用于 H2, F2, Br2, CO, HBr, HI等
+    structureHTML = `
+        <div class="text-center relative z-10">
+            <div class="flex items-center justify-center gap-8">
+                <div class="size-16 rounded-full bg-${color1}/20 border-2 border-${color1} flex items-center justify-center text-white font-bold text-2xl animate-pulse">${atom1}</div>
+                <div class="w-20 h-1 bg-gradient-to-r from-${color1} via-primary/50 to-${color2}"></div>
+                <div class="size-16 rounded-full bg-${color2}/20 border-2 border-${color2} flex items-center justify-center text-white font-bold text-2xl animate-pulse">${atom2}</div>
+            </div>
+        </div>`;
+    break;
     switch(molecule.structure) {
         case 'water':
-            structureHTML = `
+             = `
                 <div class="text-center relative z-10">
                     <div class="flex flex-col items-center gap-2">
                         <div class="flex items-center gap-8 relative">
@@ -1033,7 +958,7 @@ function updateStructure(molecule) {
             break;
 
         case 'co2':
-            structureHTML = `
+             = `
                 <div class="text-center relative z-10">
                     <div class="flex items-center justify-center gap-6">
                         <div class="relative">
@@ -1062,7 +987,65 @@ function updateStructure(molecule) {
                     </div>
                 </div>`;
             break;
-
+case 'pcl5':
+    structureHTML = `
+        <div class="text-center relative z-10">
+            <div class="relative w-64 h-64 flex items-center justify-center">
+                <!-- 中心P原子 -->
+                <div class="size-16 rounded-full bg-orange-500/20 border-2 border-orange-500 flex items-center justify-center text-white font-bold text-2xl z-10">P</div>
+                
+                <!-- 轴向Cl (上) -->
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 size-14 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center text-white font-bold text-xl">Cl</div>
+                
+                <!-- 轴向Cl (下) -->
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 size-14 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center text-white font-bold text-xl">Cl</div>
+                
+                <!-- 赤道Cl (左) -->
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 size-14 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center text-white font-bold text-xl">Cl</div>
+                
+                <!-- 赤道Cl (右) -->
+                <div class="absolute right-0 top-1/2 -translate-y-1/2 size-14 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center text-white font-bold text-xl">Cl</div>
+                
+                <!-- 赤道Cl (前) -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-12 size-14 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center text-white font-bold text-xl">Cl</div>
+            </div>
+            <div class="text-text-secondary text-xs mt-4">Trigonal Bipyramidal</div>
+        </div>`;
+    break;
+        case 'sf6':
+    structureHTML = `
+        <div class="text-center relative z-10">
+            <div class="relative w-64 h-64 flex items-center justify-center">
+                <!-- 中心S原子 -->
+                <div class="size-16 rounded-full bg-yellow-500/20 border-2 border-yellow-500 flex items-center justify-center text-white font-bold text-2xl z-10">S</div>
+                
+                <!-- 6个F原子按八面体排列 -->
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute right-0 top-1/2 -translate-y-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute top-1/4 left-1/4 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute bottom-1/4 right-1/4 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+            </div>
+            <div class="text-text-secondary text-xs mt-4">Octahedral</div>
+        </div>`;
+    break;
+        case 'xef4':
+    structureHTML = `
+        <div class="text-center relative z-10">
+            <div class="relative w-48 h-48 flex items-center justify-center">
+                <!-- 中心Xe原子 -->
+                <div class="size-16 rounded-full bg-purple-500/20 border-2 border-purple-500 flex items-center justify-center text-white font-bold text-2xl z-10">Xe</div>
+                
+                <!-- 4个F原子按正方形排列 -->
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute right-0 top-1/2 -translate-y-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+            </div>
+            <div class="text-text-secondary text-xs mt-4">Square Planar</div>
+        </div>`;
+    break;
         case 'nh3':
             structureHTML = `
                 <div class="text-center relative z-10">
