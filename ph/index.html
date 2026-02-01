@@ -933,7 +933,65 @@ function updateStructure(molecule) {
                     </div>
                 </div>`;
             break;
-
+case 'pcl5':
+    structureHTML = `
+        <div class="text-center relative z-10">
+            <div class="relative w-64 h-64 flex items-center justify-center">
+                <!-- 中心P原子 -->
+                <div class="size-16 rounded-full bg-orange-500/20 border-2 border-orange-500 flex items-center justify-center text-white font-bold text-2xl z-10">P</div>
+                
+                <!-- 轴向Cl (上) -->
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 size-14 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center text-white font-bold text-xl">Cl</div>
+                
+                <!-- 轴向Cl (下) -->
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 size-14 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center text-white font-bold text-xl">Cl</div>
+                
+                <!-- 赤道Cl (左) -->
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 size-14 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center text-white font-bold text-xl">Cl</div>
+                
+                <!-- 赤道Cl (右) -->
+                <div class="absolute right-0 top-1/2 -translate-y-1/2 size-14 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center text-white font-bold text-xl">Cl</div>
+                
+                <!-- 赤道Cl (前) -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-12 size-14 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center text-white font-bold text-xl">Cl</div>
+            </div>
+            <div class="text-text-secondary text-xs mt-4">Trigonal Bipyramidal</div>
+        </div>`;
+    break;
+			case 'sf6':
+    structureHTML = `
+        <div class="text-center relative z-10">
+            <div class="relative w-64 h-64 flex items-center justify-center">
+                <!-- 中心S原子 -->
+                <div class="size-16 rounded-full bg-yellow-500/20 border-2 border-yellow-500 flex items-center justify-center text-white font-bold text-2xl z-10">S</div>
+                
+                <!-- 6个F原子按八面体排列 -->
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute right-0 top-1/2 -translate-y-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute top-1/4 left-1/4 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute bottom-1/4 right-1/4 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+            </div>
+            <div class="text-text-secondary text-xs mt-4">Octahedral</div>
+        </div>`;
+    break;
+			case 'xef4':
+    structureHTML = `
+        <div class="text-center relative z-10">
+            <div class="relative w-48 h-48 flex items-center justify-center">
+                <!-- 中心Xe原子 -->
+                <div class="size-16 rounded-full bg-purple-500/20 border-2 border-purple-500 flex items-center justify-center text-white font-bold text-2xl z-10">Xe</div>
+                
+                <!-- 4个F原子按正方形排列 -->
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+                <div class="absolute right-0 top-1/2 -translate-y-1/2 size-12 rounded-full bg-cyan-500/20 border-2 border-cyan-500 flex items-center justify-center text-white font-bold text-lg">F</div>
+            </div>
+            <div class="text-text-secondary text-xs mt-4">Square Planar</div>
+        </div>`;
+    break;
         case 'co2':
             structureHTML = `
                 <div class="text-center relative z-10">
